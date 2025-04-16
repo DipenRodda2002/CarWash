@@ -1,0 +1,54 @@
+<div class="admin-wrapper">
+  <!-- Sidebar -->
+  <aside class="sidebar collapsed" (mouseenter)="expandSidebar()" (mouseleave)="collapseSidebar()">
+    <div class="brand">🧼</div>
+    <nav class="menu">
+      <a routerLink="/admin" routerLinkActive="active"><i class="bi bi-speedometer2"></i> <span class="link-text">Dashboard</span></a>
+      <a routerLink="/admin/viewusers" routerLinkActive="active"><i class="bi bi-people"></i> <span class="link-text">Users</span></a>
+      <a routerLink="/admin/package-management" routerLinkActive="active"><i class="bi bi-box-seam"></i> <span class="link-text">Packages</span></a>
+      <a routerLink="/admin/register"><i class="bi bi-person-plus"></i> <span class="link-text">Add Admin</span></a>
+      <a routerLink="/admin/bookings" routerLinkActive="active"><i class="bi bi-journal-text"></i> <span class="link-text">Bookings</span></a>
+      <a routerLink="/admin/leaderboard" routerLinkActive="active"><i class="bi bi-bar-chart"></i> <span class="link-text">Leaderboard</span></a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="container mt-4">
+      <h2 class="mb-4">All Bookings</h2>
+
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle text-center">
+          <thead class="table-dark">
+            <tr>
+              <th>#</th>
+              <th>Booking Id</th>
+              <th>Customer Name</th>
+              <th>Washer Name</th>
+              <th>Package Name</th>
+              <th>Address</th>
+              <th>Car Model</th>
+              <th>Order Date</th>
+              <th>Service Date</th>
+              <th>Time Slot</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let book of bookings; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ book.bookingId }}</td>
+              <td>{{ book.customerName }}</td>
+              <td>{{ book.washerName }}</td>
+              <td>{{ book.packageName }}</td>
+              <td>{{ book.addressName }}</td>
+              <td>{{ book.carName }}</td>
+              <td>{{ book.orderDate | date:'mediumDate' }}</td>
+              <td>{{ book.serviceDate | date:'mediumDate' }}</td>
+              <td>{{ book.timeSlot }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

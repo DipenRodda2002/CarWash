@@ -1,0 +1,158 @@
+/* === Layout Wrapper === */
+.admin-wrapper {
+    display: flex;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f9;
+  }
+  
+  /* === Sidebar Styling === */
+  .sidebar {
+    width: 260px;
+    background: linear-gradient(180deg, #1b2a41, #152238);
+    color: #ffffff;
+    padding: 30px 20px;
+    box-shadow: 4px 0 12px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .brand {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 40px;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+  
+  .menu {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .menu a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 12px 15px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .menu a:hover,
+  .menu a.active {
+    background-color: #233952;
+    color: #fff;
+    padding-left: 20px;
+    font-weight: 500;
+  }
+  
+  /* === Main Content Area === */
+  .main-content {
+    margin-left: 260px;
+    width: calc(100% - 260px);
+    padding: 40px;
+  }
+  
+  /* === Container / Card Box === */
+  .container {
+    background-color: #ffffff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* === Heading === */
+  h2 {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #dee2e6;
+    padding-bottom: 0.5rem;
+  }
+  
+  /* === Form Styling === */
+  .form-group label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #495057;
+  }
+  
+  .form-control {
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+    font-size: 0.95rem;
+    padding: 0.5rem 0.75rem;
+    transition: border-color 0.2s ease-in-out;
+  }
+  
+  .form-control:focus {
+    border-color: #198754;
+    box-shadow: 0 0 0 0.15rem rgba(25, 135, 84, 0.25);
+  }
+  
+  /* === Buttons === */
+  button.btn {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .btn-success {
+    background-color: #198754;
+    border: none;
+    color: #fff;
+  }
+  
+  .btn-success:hover {
+    background-color: #157347;
+  }
+  
+  .btn-primary {
+    background-color: #0d6efd;
+    border: none;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0b5ed7;
+  }
+  
+  /* === Error Message === */
+  .text-danger {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  
+  /* === Responsive Styling === */
+  @media (max-width: 768px) {
+    .admin-wrapper {
+      flex-direction: column;
+    }
+  
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+      box-shadow: none;
+    }
+  
+    .main-content {
+      margin-left: 0;
+      width: 100%;
+      padding: 20px;
+    }
+  
+    .menu a {
+      padding: 10px;
+      font-size: 0.95rem;
+    }
+  }
+  

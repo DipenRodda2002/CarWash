@@ -1,0 +1,31 @@
+<app-customer-navbar *ngIf="userRole === 'Customer'"></app-customer-navbar>
+<app-washer-sidebar *ngIf="userRole === 'Washer'"></app-washer-sidebar>
+<!-- Logged-in Role: {{ userRole }} -->
+<div class="add-car-container">
+    <h2>Add New Address</h2>
+    <form [formGroup]="addressForm" (ngSubmit)="onSubmit()">
+        <div>
+            <label>Street: </label>
+            <input type="text" formControlName="street" />
+        </div>
+
+      <div>
+        <label>City: </label>
+        <input type="text" formControlName="city" />
+      </div>
+      <div>
+        <label>Pincode:</label>
+        <input type="text" formControlName="pincode" />
+      </div>
+      <div>
+        <label>State:</label>
+        <input type="text" formControlName="state" />
+      </div>
+      <div>
+        <label>Address Type:</label>
+        <input type="text" formControlName="addressType" />
+      </div>
+      <button type="submit" [disabled]="addressForm.invalid">Add Address</button>
+    </form>
+  </div>
+  <app-washer-footer *ngIf="userRole === 'Washer'"></app-washer-footer>

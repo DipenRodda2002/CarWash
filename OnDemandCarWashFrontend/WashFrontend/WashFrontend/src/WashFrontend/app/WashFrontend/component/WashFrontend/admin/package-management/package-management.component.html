@@ -1,0 +1,70 @@
+<div class="admin-wrapper">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="brand">🧼 GreenCarWash</div>
+    <nav class="menu">
+      <a routerLink="/admin" routerLinkActive="active"><i class="bi bi-speedometer2"></i> Dashboard</a>
+      <a routerLink="/admin/viewusers" routerLinkActive="active"><i class="bi bi-people"></i> Users</a>
+      <a routerLink="/admin/package-management" routerLinkActive="active"><i class="bi bi-box-seam"></i> Packages</a>
+      <a routerLink="/admin/register"><i class="bi bi-person-plus"></i> Add Admin</a>
+      <a routerLink="/admin/bookings" routerLinkActive="active"><i class="bi bi-journal-text"></i> Bookings</a>
+      <a routerLink="/admin/leaderboard" routerLinkActive="active"><i class="bi bi-bar-chart"></i> Leaderboard</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container">
+      <h2>Manage Packages</h2>
+
+      <!-- Add Package Button -->
+      <div class="d-flex justify-content-end mb-3">
+        <button class="btn btn-success" (click)="showAddForm()">+ Add Package</button>
+      </div>
+
+      <!-- Package Form -->
+      <div *ngIf="showForm">
+        <app-package-form
+          *ngIf="showForm"
+          [packageData]="packageData"
+          (formSubmitted)="onFormSubmit()"
+          (cancel)="onCancelForm()"
+        ></app-package-form>
+      </div>
+
+      <!-- Package Table -->
+      <div class="table-container" *ngIf="packages.length">
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Package Name</th>
+              <th>Description</th>
+              <th>Price</th>
+              <th>Duration</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let pkg of packages; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ pkg.packageName }}</td>
+              <td>{{ pkg.description }}</td>
+              <td>₹{{ pkg.price }}</td>
+              <td>{{ pkg.duration }}</td>
+              <td class="action-buttons">
+                <button class="btn btn-primary btn-sm" (click)="editPackage(pkg)">Edit</button>
+                <button class="btn btn-danger btn-sm" (click)="deletePackage(pkg.packageId)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Empty State -->
+      <div *ngIf="!packages.length && !showForm" class="text-center mt-5 text-muted">
+        No packages available. Click "Add Package" to create one.
+      </div>
+    </div>
+  </main>
+</div>

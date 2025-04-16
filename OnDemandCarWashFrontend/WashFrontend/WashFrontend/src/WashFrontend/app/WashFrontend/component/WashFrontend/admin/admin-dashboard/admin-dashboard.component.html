@@ -1,0 +1,58 @@
+<div class="admin-dashboard">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">GreenCarWash Admin</div>
+    <nav class="nav-links">
+      <a routerLink="/admin" routerLinkActive="active">Dashboard</a>
+      <a routerLink="/admin/viewusers" routerLinkActive="active">User Management</a>
+      <a routerLink="/admin/package-management" routerLinkActive="active">Packages Management</a>
+      <a routerLink="/admin/register">Add New Admin</a>
+      <a routerLink="/admin/bookings" routerLinkActive="active">Bookings</a>
+      <a routerLink="/admin/leaderboard" routerLinkActive="active">Leaderboard</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="top-bar">
+      <h1>Welcome, Admin</h1>
+      <div class="logout-btn">
+        <button (click)="logout()">Logout</button>
+      </div>
+    </header>
+
+    <section class="dashboard-widgets">
+      <div class="widget" >Total Customers:{{totalcustomerscount}}</div>
+      <div class="widget">Total Washers: {{totalwasherscount}}</div>
+      <div class="widget">Total Orders: {{totalbookingcount}}</div>
+      <!-- <div class="widget">Revenue: $12,450</div> -->
+    </section>
+
+    <!-- <section class="charts-section">
+    
+      <div class="chart">Order Trends Chart</div>
+      <div class="chart">Status Distribution Pie</div>
+    </section> -->
+    <div class="charts-container">
+      <div class="chart-card" *ngIf="bookingTrendChartData.datasets.length">
+        <h3>Booking Trend (Last 7 Days)</h3>
+        <canvas
+          baseChart
+          [data]="bookingTrendChartData"
+          [type]="bookingTrendChartType"
+          [options]="bookingTrendChartOptions">
+        </canvas>
+      </div>
+    
+      <div class="chart-card"*ngIf="bookingStatusChartData.datasets.length">
+        <h3>Booking Status Distribution</h3>
+        <canvas
+          baseChart
+          [data]="bookingStatusChartData"
+          [type]="bookingStatusChartType"
+          [options]="bookingStatusChartOptions">
+        </canvas>
+      </div>
+    </div>
+  </main>
+</div>

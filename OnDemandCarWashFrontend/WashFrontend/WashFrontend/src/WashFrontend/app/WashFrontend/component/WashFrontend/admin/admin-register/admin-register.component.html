@@ -1,0 +1,52 @@
+<div class="admin-wrapper">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="brand">🧼 GreenCarWash</div>
+    <nav class="menu">
+      <a routerLink="/admin" routerLinkActive="active"><i class="bi bi-speedometer2"></i> Dashboard</a>
+      <a routerLink="/admin/viewusers" routerLinkActive="active"><i class="bi bi-people"></i> Users</a>
+      <a routerLink="/admin/package-management" routerLinkActive="active"><i class="bi bi-box-seam"></i> Packages</a>
+      <a routerLink="/admin/register" routerLinkActive="active"><i class="bi bi-person-plus"></i> Add Admin</a>
+      <a routerLink="/admin/bookings" routerLinkActive="active"><i class="bi bi-journal-text"></i> Bookings</a>
+      <a routerLink="/admin/leaderboard" routerLinkActive="active"><i class="bi bi-bar-chart"></i> Leaderboard</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container">
+      <h2>Add New Admin</h2>
+
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group mb-3">
+          <label>Email (Username)</label>
+          <input type="email" formControlName="username" class="form-control" placeholder="admin@example.com">
+        </div>
+
+        <div class="form-group mb-3">
+          <label>Name</label>
+          <input type="text" formControlName="name" class="form-control" placeholder="Full Name">
+        </div>
+
+        <div class="form-group mb-3">
+          <label>Phone</label>
+          <input type="text" formControlName="phone" class="form-control" placeholder="1234567890">
+        </div>
+
+        <div class="form-group mb-3">
+          <label>Password</label>
+          <input type="password" formControlName="password" class="form-control" placeholder="••••••••">
+        </div>
+
+        <div class="form-group mb-4">
+          <label>Profile Image URL (optional)</label>
+          <input type="text" formControlName="profileImage" class="form-control" placeholder="https://...">
+        </div>
+
+        <button class="btn btn-success" type="submit" [disabled]="registerForm.invalid">Register Admin</button>
+      </form>
+
+      <p *ngIf="errorMessage" class="text-danger mt-3">{{ errorMessage }}</p>
+    </div>
+  </main>
+</div>
