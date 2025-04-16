@@ -1,0 +1,47 @@
+public async Task<ActionResult> Create(int userId)
+{
+   
+    var user = Session["Token"] as LoginRequest;
+    string token = user.Token;
+    _httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " +token);
+    //UserModel u = new UserModel();
+    //ViewBag.UserAddress = u.UserAddress;
+    HttpClient client = new HttpClient();
+    client.BaseAddress = new Uri($"http://localhost:59561/api/Cart/orderitembyuserid/{userId}");
+    client.DefaultRequestHeaders.Accept.Clear();
+    client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+    try
+    {
+
+        //  ViewBag.UserId = userId;
+        CartViewModel cartModel = new CartViewModel();
+        OrderModel orderModel = new OrderModel();
+        cartModel.Order = orderModel;
+        var productResponse = await client.GetAsync(client.BaseAddress);
+        if (productResponse.IsSuccessStatusCode)
+        {
+            var orderItem = JsonConvert.DeserializeObject<OrderItemModel[]>(await productResponse.Content.ReadAsStringAsync());
+            cartModel.TotalPrice = 0;
+
+            List<OrderItemModel> items = new List<OrderItemModel>();
+
+            foreach (var item in orderItem)
+            {
+                items.Add(item);
+                cartModel.TotalPrice += item.Price;
+
+            }
+
+
+            cartModel.OrderItems = items;
+            
+        }
+        cartModel.Order.UserId = userId;
+        return View(cartModel);
+        
+    }
+    catch (Exception)
+    {
+        return View("Error");
+    }
+}
