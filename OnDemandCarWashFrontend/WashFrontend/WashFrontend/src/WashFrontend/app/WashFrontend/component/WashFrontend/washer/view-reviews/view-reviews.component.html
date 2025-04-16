@@ -1,0 +1,47 @@
+<app-washer-sidebar></app-washer-sidebar> 
+<div class="container">
+    <h2>Customer Reviews</h2>
+  
+    <!-- Reactive Form -->
+    <form [formGroup]="reviewForm" class="filter-form">
+      <input type="text" formControlName="search" placeholder="Search by email or comment">
+      <select formControlName="sort">
+        <option value="">Sort by Rating</option>
+        <option value="high">Highest to Lowest</option>
+        <option value="low">Lowest to Highest</option>
+      </select>
+    </form>
+  
+    <!-- Show message if there are no reviews -->
+    <p *ngIf="filteredReviews.length === 0" class="no-reviews">No reviews found.</p>
+  
+    <!-- Table to display reviews -->
+    <div class="table-container" *ngIf="filteredReviews.length > 0">
+      <table>
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Comment</th>
+            <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let review of filteredReviews">
+            <td>{{ review.email }}</td>
+            <td>{{ review.comment }}</td>
+            <td>
+              <span class="stars">
+                <span *ngFor="let star of [].constructor(review.rating)">
+                  ⭐
+                </span>
+              </span>
+              ({{ review.rating }}/5)
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- <app-washer-footer></app-washer-footer> -->
+ 

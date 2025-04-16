@@ -1,0 +1,34 @@
+
+<app-customer-navbar></app-customer-navbar>
+
+<div class="add-car-container">
+    <h2>Add New Car</h2>
+    <form [formGroup]="carForm" (ngSubmit)="onSubmit()">
+        <div>
+            <label>Car Brand:</label>
+            <input type="text" formControlName="brand" />
+        </div>
+
+      <div>
+        <label>Car Model:</label>
+        <input type="text" formControlName="model" />
+      </div>
+      <div>
+        <label>Year:</label>
+        <input type="number" formControlName="year" />
+      </div>
+      <div>
+        <label>Car Number:</label>
+        <input type="text" formControlName="licensePlate" />
+      </div>
+      <!-- <div>
+        <label>Car Image:</label>
+        <input type="text" formControlName="carImage" />
+      </div> -->
+      <div>
+        <label>Car Image:</label>
+        <input type="file" (change)="onFileChange($event)" />
+      </div>
+      <button type="submit" [disabled]="carForm.invalid">Add Car</button>
+    </form>
+  </div>

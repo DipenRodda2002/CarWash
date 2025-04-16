@@ -1,0 +1,38 @@
+<nav class="navbar">
+    <div class="navbar-brand"> <a routerLink="/customer" class="brand-link">CarWash Dashboard</a></div>
+    <ul class="navbar-menu">
+      <li class="dropdown">
+        <span>Cars ▼</span>
+        <ul class="dropdown-menu">
+          
+          <a routerLink="/customer/addcar">Add New Car</a>
+          <a routerLink="/customer/mycars">My Cars</a>
+  
+        </ul>
+      </li>
+  
+      <li class="dropdown">
+        <span>Addresses ▼</span>
+        <ul class="dropdown-menu">
+          <a routerLink="/myaddress">My Address</a>
+          <a routerLink="/address">New Address</a>
+        </ul>
+      </li>
+  
+      <li class="dropdown">
+        <span>Bookings ▼</span>
+        <ul class="dropdown-menu">
+          <a routerLink="/customer/book-wash">New Bookings</a>
+          <a routerLink="/customer/view-bookings">My Bookings</a>
+        </ul>
+      </li>
+  
+      <li>
+        <a routerLink="/customer/profile">Profile</a>
+      </li>
+      <li>
+        <a routerLink="/login" (click)="logout()">Logout</a>
+      </li>
+    </ul>
+  </nav>
+  

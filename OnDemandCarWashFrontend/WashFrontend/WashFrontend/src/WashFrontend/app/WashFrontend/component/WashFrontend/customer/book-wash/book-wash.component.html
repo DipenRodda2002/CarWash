@@ -1,0 +1,86 @@
+<app-customer-navbar></app-customer-navbar>
+
+<div class="booking-container">
+  <h2>Book a Wash</h2>
+
+  <!-- Select Address -->
+  <label for="address">Select Address:</label>
+  <select id="address" [(ngModel)]="selectedAddressId">
+    <option *ngFor="let address of addresses" [value]="address.addressId">
+      {{ address.street }}- {{ address.city }}
+    </option>
+  </select>
+
+  <!-- Select Service Date -->
+  <label for="serviceDate">Select Service Date:</label>
+  <input type="date" [(ngModel)]="serviceDate" id="serviceDate" />
+  <label for="timeSlot">Select Time Slot:</label>
+  <select id="timeSlot" [(ngModel)]="TimeSlot">
+    <option value="9-11 AM">9-11 AM</option>
+    <option value="11 AM - 1 PM">11 AM - 1 PM</option>
+    <option value="2-4 PM">2-4 PM</option>
+    <option value="4-6 PM">4-6 PM</option>
+  </select>
+  <button (click)="findWashers()">Find Washers</button>
+
+  <!-- Show Available Washers -->
+  <!-- <div *ngIf="washers.length > 0">
+    <h3>Select a Washer</h3>
+    <div
+      *ngFor="let washer of washers"
+      class="washer-card"
+      (click)="selectWasher(washer)"
+    >
+      <p><strong>Name:</strong> {{ washer.name }}</p>
+      <p><strong>City:</strong> {{ washer.city }}</p>
+      <p><strong>Ratings:</strong> {{ washer.averageRating }} </p>
+      <p><strong>TotalReviews:</strong>{{washer.totalReviews}}</p>
+    </div>
+  </div> -->
+  <div *ngIf="washers.length > 0" class="washer-section">
+    <h3>Select a Washer</h3>
+    <div class="washer-list-scroll">
+      <div
+        *ngFor="let washer of washers"
+        class="washer-card"
+        [class.selected]="selectedWasher?.washerId === washer.washerId"
+        (click)="selectWasher(washer)"
+      >
+        <p><strong>Name:</strong> {{ washer.name }}</p>
+        <p><strong>City:</strong> {{ washer.city }}</p>
+        <p><strong>Rating:</strong> ⭐ {{ washer.averageRating }} ({{ washer.totalReviews }} reviews)</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Booking Form -->
+  <div *ngIf="selectedWasher">
+    <h3>Confirm Booking</h3>
+    <form [formGroup]="bookingForm" (ngSubmit)="confirmBooking()">
+      <p><strong>Washer:</strong> {{ selectedWasher.name }}</p>
+      <label for="car">Select Car:</label>
+      <select formControlName="carId">
+        <option *ngFor="let car of cars" [value]="car.carId">
+          {{ car.brand }} - {{ car.licensePlate }}
+        </option>
+      </select>
+      <label for="package">Select Package:</label>
+      <select formControlName="packageId">
+        <option *ngFor="let pkg of packages" [value]="pkg.packageId">
+          {{ pkg.packageName }} - ${{ pkg.price }}
+        </option>
+      </select>
+      <label for="notes">Additional Notes:</label>
+      <textarea formControlName="notes"></textarea>
+      <label for="paymentMethod">Payment Method:</label>
+      <select formControlName="paymentMethod">
+        <option value="Credit Card">Credit Card</option>
+        <option value="Debit Card">Debit Card</option>
+        <option value="UPI">UPI</option>
+        <option value="Cash">Cash</option>
+      </select>
+
+      <button type="submit">Confirm Booking</button>
+    </form>
+  </div>
+</div>

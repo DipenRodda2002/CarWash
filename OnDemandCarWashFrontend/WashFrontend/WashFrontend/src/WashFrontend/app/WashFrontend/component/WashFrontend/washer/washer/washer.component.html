@@ -1,0 +1,67 @@
+<app-washer-sidebar></app-washer-sidebar>
+
+<div class="container mt-4 mb-5 washer-dashboard">
+  <!-- Welcome Section -->
+  <div class="mb-4">
+    <h2 class="fw-bold text-dark">Welcome Back, <span class="text-primary">Washer!</span></h2>
+    <p class="text-muted fs-5">Here’s your performance snapshot at a glance.</p>
+  </div>
+
+  <!-- Dashboard Stats Cards -->
+  <div class="row g-4 mb-4">
+    <div class="col-md-3 col-sm-6" *ngFor="let stat of stats">
+      <div class="card stat-card border-start border-4" [ngClass]="stat.borderClass">
+        <div class="card-body text-center">
+          <h6 [ngClass]="stat.textClass" class="mb-1">{{ stat.title }}</h6>
+          <h3 class="fw-semibold">{{ stat.value }}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Section -->
+  <div class="notification alert alert-info d-flex justify-content-between align-items-center shadow-sm" *ngIf="notification">
+    <span class="fs-6">{{ notification }}</span>
+    <button class="btn btn-sm btn-outline-secondary" (click)="clearNotification()">Dismiss</button>
+  </div>
+
+  <!-- Recent Bookings Table -->
+  <div *ngIf="recentBookings && recentBookings.length > 0" class="mt-5">
+    <h5 class="mb-3 text-dark">Recent Bookings</h5>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover text-center align-middle shadow-sm">
+        <thead class="table-dark text-white">
+          <tr>
+            <th>#</th>
+            <th>Customer</th>
+            <th>Service Date</th>
+            <th>Car Model</th>
+            <th>Package</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let booking of recentBookings; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ booking.customerName }}</td>
+            <td>{{ booking.serviceDate | date:'mediumDate' }}</td>
+            <td>{{ booking.model }}</td>
+            <td>{{ booking.packageName }}</td>
+            <td>
+              <span class="badge"
+                    [ngClass]="{
+                      'bg-success': booking.orderStatus === 'Completed',
+                      'bg-warning': booking.orderStatus === 'Pending',
+                      'bg-danger': booking.orderStatus === 'Cancelled'
+                    }">
+                {{ booking.orderStatus }}
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- <app-washer-footer></app-washer-footer> -->

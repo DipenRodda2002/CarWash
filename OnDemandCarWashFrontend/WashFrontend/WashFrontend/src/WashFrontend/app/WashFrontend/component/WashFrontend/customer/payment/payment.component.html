@@ -1,0 +1,11 @@
+<div class="payment-container">
+    <h2>Complete Your Payment</h2>
+    <p><strong>Booking ID:</strong> {{ bookingId }}</p>
+    <p><strong>Amount:</strong> ${{ amount }}</p>
+    <p><strong>Payment Method:</strong> {{ paymentMethod }}</p>
+  
+    <button (click)="proceedWithPayment()" class="pay-btn">
+      {{ paymentMethod === 'Cash' ? 'Confirm Cash Payment' : 'Pay Now' }}
+    </button>
+  </div>
+  

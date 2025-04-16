@@ -1,0 +1,62 @@
+
+<app-customer-navbar></app-customer-navbar>
+
+<div class="container">
+  <h2>My Bookings</h2>
+
+  <!-- Search Form -->
+  <form [formGroup]="bookingForm" class="search-form">
+    <input type="text" formControlName="search" placeholder="Search by Name or Payment Method" class="search-input" />
+  </form>
+
+  <!-- Bookings Table -->
+  <div class="table-container">
+    <div *ngIf="message" class="success-message">
+      {{ message }}
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Booking ID</th>
+          <th>Washer Name</th>
+          <th>Order Date</th>
+          <th>Service Date</th>
+          <th>Total Price</th>
+          <th>Payment Method</th>
+          <th>Order Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let booking of filteredBookings">
+          <td>{{ booking.bookingId }}</td>
+          <td>{{ booking.name }}</td>
+          <td>{{ booking.orderDate | date: 'shortDate' }}</td>
+          <td>{{ booking.serviceDate | date: 'shortDate' }}</td>
+          <td>₹{{ booking.totalPrice.toFixed(2) }}</td>
+          <td>{{ booking.paymentMethod }}</td>
+          <td>{{ booking.orderStatus }}</td>
+          <td>
+            <!-- Cancel Button -->
+            <button 
+              (click)="updateStatus(booking.bookingId, 'Cancelled')" 
+              class="btn-update"
+              [ngStyle]="{'background-color': 'red', 'color': 'white'}"
+              [disabled]="booking.orderStatus === 'Completed' || booking.orderStatus === 'Cancelled'">
+              Cancel Booking
+            </button>
+
+            <!-- Give Review Button -->
+            <button 
+              [routerLink]="['/customer/review', booking.bookingId]" 
+              class="btn-review" 
+              *ngIf="booking.orderStatus === 'Completed'">
+              Give Review
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

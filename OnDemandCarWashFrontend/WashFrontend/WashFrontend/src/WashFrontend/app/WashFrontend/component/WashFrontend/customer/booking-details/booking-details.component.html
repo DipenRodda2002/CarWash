@@ -1,0 +1,38 @@
+<div class="details-container">
+    <button class="dashboard-btn" (click)="ondashboard()">🏠 Back to Dashboard</button>
+  
+    <div *ngIf="isLoading" class="loading">Loading booking details...</div>
+  
+    <div *ngIf="!isLoading && bookingDetails">
+      <h2>🧼 Booking #{{ bookingDetails.bookingId }}</h2>
+  
+      <p><strong>👤 Customer:</strong> {{ bookingDetails.customerName }}</p>
+      <p><strong>🧑‍🔧 Washer:</strong> {{ bookingDetails.washerName }}</p>
+      <p><strong>📍 City:</strong> {{ bookingDetails.city }}</p>
+      <p><strong>📅 Service Date:</strong> {{ bookingDetails.serviceDate }}</p>
+      <p><strong>⏰ Time Slot:</strong> {{ bookingDetails.timeSlot }}</p>
+  
+      <p>
+        <strong>📌 Status:</strong>
+        <span class="badge" [ngClass]="{
+          'pending': bookingDetails.status === 'Pending',
+          'completed': bookingDetails.status === 'Completed',
+          'cancelled': bookingDetails.status === 'Cancelled'
+        }">
+          {{ bookingDetails.status }}
+        </span>
+      </p>
+  
+      <h3>💳 Payment Info</h3>
+      <p><strong>Method:</strong> {{ bookingDetails.paymentMethod }}</p>
+      <p><strong>Payment ID:</strong> {{ bookingDetails.paymentId }}</p>
+      <p><strong>Total Price:</strong> ₹{{ bookingDetails.totalPrice }}</p>
+  
+      <button class="download-btn" (click)="downloadReceipt()">🧾 Download Receipt</button>
+    </div>
+  
+    <div *ngIf="!isLoading && errorMessage">
+      <p class="text-danger">{{ errorMessage }}</p>
+    </div>
+  </div>
+  

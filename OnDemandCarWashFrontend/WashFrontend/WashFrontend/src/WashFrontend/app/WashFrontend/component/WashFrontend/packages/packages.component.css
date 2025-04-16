@@ -1,0 +1,87 @@
+/* General Container Styling */
+.container {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  /* No Packages Message */
+  .no-packages {
+    font-size: 18px;
+    color: red;
+    margin-top: 10px;
+  }
+  
+  /* Packages Grid Layout */
+  .packages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  /* Individual Package Card */
+  .package-card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  /* Hover Effect */
+  .package-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 4px 6px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Package Image */
+  .package-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  /* Package Details */
+  .package-card h3 {
+    font-size: 20px;
+    color: #007bff;
+    margin-top: 10px;
+  }
+  
+  .package-card p {
+    font-size: 16px;
+    color: #555;
+    margin: 5px 0;
+  }
+  
+  /* Price Styling */
+  .price {
+    font-weight: bold;
+    color: #28a745;
+    font-size: 18px;
+    margin-top: 8px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .packages-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .package-image {
+      height: 150px;
+    }
+  }
+  

@@ -1,0 +1,17 @@
+<nav class="navbar">
+    <div class="nav-container">
+      <div class="navbar-brand"> <a routerLink="/washer" class="brand-link">CarWash</a></div>
+      <ul class="nav-links">
+        <!-- Washer-Specific Links -->
+        <ng-container *ngIf="userRole === 'Washer'">
+          <li><button (click)="OnAddress()">Add Address</button></li>
+          <li><button (click)="OnViewBookings()">View Bookings</button></li>
+          <li><button (click)="OnViewReviews()">View Reviews</button></li>
+          <li><button (click)="OnPackages()">View Packages</button></li>
+        </ng-container>
+  
+        <li><button (click)="logout()">Logout</button></li>
+      </ul>
+    </div>
+  </nav>
+  

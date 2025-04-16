@@ -1,0 +1,20 @@
+
+<app-customer-navbar></app-customer-navbar>
+<div class="notification" *ngIf="notification">
+  <p>{{ notification }}</p>
+  <button (click)="clearNotification()">Dismiss</button>
+</div>
+
+<div class="dashboard-container">
+  <h2>Available Packages</h2>
+  
+  <div class="packages-grid">
+    <div class="package-card" *ngFor="let package of packages">
+      <img src="https://static.vecteezy.com/system/resources/previews/003/492/197/large_2x/car-washing-car-wash-at-the-special-place-alone-man-smiling-to-the-camera-while-washing-black-car-cleaning-car-using-high-pressure-water-concept-free-photo.JPG" alt="Package Image" class="package-image">
+      <h3>{{ package.packageName }}</h3>
+      <p class="price">Price: ₹{{ package.price }}</p>
+      <p class="description">{{ package.description }}</p>
+      <button class="book-now"  (click)="onBookClick()">Book Now</button>
+    </div>
+  </div>
+</div>

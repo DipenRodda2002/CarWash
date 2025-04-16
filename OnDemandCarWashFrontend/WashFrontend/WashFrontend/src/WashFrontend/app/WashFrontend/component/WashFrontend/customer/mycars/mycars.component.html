@@ -1,0 +1,23 @@
+<app-customer-navbar></app-customer-navbar>
+<div class="cars-container">
+  <h2>My Cars</h2>
+  <div *ngIf="cars.length > 0; else noCars">
+    <div class="car-card" *ngFor="let car of cars">
+      <img
+        *ngIf="car.carImage"
+        [src]="'http://localhost:5005/UploadedImages/' + car.carImage"
+        alt="Car Image"
+        class="car-image"
+      />
+      <!-- <p><strong>CarId:</strong>{{car.carId}}</p> -->
+      <p><strong>Brand:</strong> {{ car.brand }}</p>
+      <p><strong>Model:</strong> {{ car.model }}</p>
+      <p><strong>Year:</strong> {{ car.year }}</p>
+      <p><strong>License Plate:</strong> {{ car.licensePlate }}</p>
+      <button class="delete-btn" (click)="deletecar(car.carId)">Delete</button>
+    </div>
+  </div>
+  <ng-template #noCars>
+    <p>No cars found for your account.</p>
+  </ng-template>
+</div>

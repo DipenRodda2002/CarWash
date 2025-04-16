@@ -1,0 +1,110 @@
+
+<app-washer-sidebar></app-washer-sidebar>
+<div class="container">
+    <h2>My Bookings</h2>
+  
+
+    <form [formGroup]="bookingForm" class="search-form">
+      <input type="text" formControlName="search" placeholder="Search by Name or Payment Method" class="search-input" />
+    </form>
+  
+  
+    <div class="table-container">
+        <div *ngIf="message" class="success-message">
+            {{ message }}
+          </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Booking ID</th>
+            <th>Name</th>
+            <th>Order Date</th>
+            <th>Service Date</th>
+            <th>Total Price</th>
+            <th>Payment Method</th>
+            <th>Order Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let booking of filteredBookings">
+            <td>{{ booking.bookingId }}</td>
+            <td>{{ booking.name }}</td>
+            <td>{{ booking.orderDate | date: 'shortDate' }}</td>
+            <td>{{ booking.serviceDate | date: 'shortDate' }}</td>
+            <td>₹{{ booking.totalPrice.toFixed(2) }}</td>
+            <td>{{ booking.paymentMethod }}</td>
+            <!-- <td> -->
+              <!-- <select [(ngModel)]="booking.orderStatus">
+                
+                <option value="Confirmed">Confirmed</option>
+                <option value="Completed">Completed</option>
+            
+              </select> -->
+              <!-- <select
+              *ngIf="booking.orderStatus === 'Confirmed'"
+              [(ngModel)]="booking.tempStatus"
+              class="status-select yellow-status"
+            >
+              <option value="Confirmed">Confirmed</option>
+              <option value="Completed">Completed</option>
+            </select>
+            <span 
+              *ngIf="booking.orderStatus !== 'Confirmed'"
+              [ngClass]="{
+                'status-text': true,
+                'red-status': booking.orderStatus === 'Cancelled',
+                'green-status': booking.orderStatus === 'Completed'
+              }"
+            >
+              {{ booking.orderStatus }}
+            </span>
+            </td>
+            <td> -->
+              <!-- <button (click)="updateStatus(booking.bookingId, booking.orderStatus)" class="btn-update">
+                Update
+              </button> -->
+              <!-- <button 
+              *ngIf="booking.orderStatus === 'Confirmed'" 
+              (click)="updateStatus(booking.bookingId, booking.tempStatus)" 
+              class="btn-update"
+            >
+              Update
+            </button>
+            </td> -->
+            <td>
+              <select
+                *ngIf="booking.orderStatus === 'Confirmed' || booking.tempStatus !== booking.orderStatus"
+                [(ngModel)]="booking.tempStatus"
+                class="status-select yellow-status"
+              >
+                <option value="Confirmed">Confirmed</option>
+                <option value="Completed">Completed</option>
+              </select>
+              <span 
+                *ngIf="booking.orderStatus !== 'Confirmed' && booking.tempStatus === booking.orderStatus"
+                [ngClass]="{
+                  'status-text': true,
+                  'red-status': booking.orderStatus === 'Cancelled',
+                  'green-status': booking.orderStatus === 'Completed'
+                }"
+              >
+                {{ booking.orderStatus }}
+              </span>
+            </td>
+            <td>
+              <button 
+                *ngIf="booking.tempStatus !== booking.orderStatus" 
+                (click)="updateStatus(booking.bookingId, booking.tempStatus)" 
+                class="btn-update"
+              >
+                Update
+              </button>
+            </td>
+            
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- <app-washer-footer></app-washer-footer> -->

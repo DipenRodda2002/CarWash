@@ -1,0 +1,208 @@
+/* 
+.booking-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffffff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .booking-container h2,
+  .booking-container h3 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .booking-container label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+  }
+  
+  .booking-container select,
+  .booking-container input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .booking-container button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .booking-container button:hover {
+    background: #0056b3;
+  }
+
+  .washer-card {
+    padding: 15px;
+    margin: 10px 0;
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .washer-card:hover {
+    background: #e0f7fa;
+    border-color: #007bff;
+  }
+  
+  .washer-card.selected {
+    background: #007bff;
+    color: white;
+    border-color: #0056b3;
+  }
+  
+  .booking-container form {
+    margin-top: 15px;
+    padding: 10px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .booking-container select {
+    cursor: pointer;
+  }
+   */
+   /* Container Styling */
+.booking-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 25px;
+  background: #ffffff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Headings */
+.booking-container h2,
+.booking-container h3 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Labels */
+.booking-container label {
+  font-weight: 600;
+  margin-top: 15px;
+  display: block;
+}
+
+/* Inputs & Dropdowns */
+.booking-container select,
+.booking-container input,
+.booking-container textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: #f9f9f9;
+  transition: border 0.3s;
+}
+
+.booking-container select:focus,
+.booking-container input:focus,
+.booking-container textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Button Styling */
+.booking-container button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.booking-container button:hover {
+  background: #0056b3;
+}
+
+/* Washer Card Section */
+.washer-section {
+  margin-top: 25px;
+}
+
+/* Scrollable washer list */
+.washer-list-scroll {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scrollbar-width: thin;
+}
+
+/* Washer Card Styling */
+.washer-card {
+  flex: 0 0 auto;
+  min-width: 220px;
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0px 2px 6px rgba(0,0,0,0.05);
+}
+
+.washer-card:hover {
+  background: #e0f7fa;
+  border-color: #007bff;
+  transform: scale(1.03);
+}
+
+.washer-card.selected {
+  background: #007bff;
+  color: white;
+  border-color: #0056b3;
+}
+
+/* Booking Form Styling */
+.booking-container form {
+  margin-top: 25px;
+  padding: 15px;
+  background: #f4f6f8;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .washer-list-scroll {
+    flex-direction: column;
+    overflow-x: visible;
+  }
+
+  .washer-card {
+    min-width: 100%;
+  }
+}

@@ -1,0 +1,26 @@
+<p>give-review works!</p>
+<div class="review-container">
+    <h2>Leave a Review</h2>
+  
+    <form [formGroup]="reviewForm" (ngSubmit)="submitReview()">
+      <label for="rating">Rating:</label>
+      <select formControlName="rating" id="rating" required>
+        <option value="">Select Rating</option>
+        <option *ngFor="let rate of [1, 2, 3, 4, 5]" [value]="rate">
+          {{ rate }}
+        </option>
+      </select>
+  
+      <label for="comment">Comment:</label>
+      <textarea
+        id="comment"
+        formControlName="comment"
+        placeholder="Write your review here"
+      ></textarea>
+  
+      <button type="submit" [disabled]="reviewForm.invalid">Submit Review</button>
+    </form>
+  
+    <p class="message">{{ message }}</p>
+  </div>
+  

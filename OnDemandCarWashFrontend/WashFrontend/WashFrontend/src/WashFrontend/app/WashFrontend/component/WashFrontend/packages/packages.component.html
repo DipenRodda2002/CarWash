@@ -1,0 +1,22 @@
+<app-washer-sidebar></app-washer-sidebar>
+
+<div class="container">
+    <h2>Available Wash Packages</h2>
+  
+    <div *ngIf="packages.length === 0" class="no-packages">
+      <p>No wash packages available.</p>
+    </div>
+  
+    <div class="packages-grid">
+      <div class="package-card" *ngFor="let package of packages">
+        <img src="https://static.vecteezy.com/system/resources/previews/003/492/197/large_2x/car-washing-car-wash-at-the-special-place-alone-man-smiling-to-the-camera-while-washing-black-car-cleaning-car-using-high-pressure-water-concept-free-photo.JPG" alt="Package Image" class="package-image">
+        <h3>{{ package.name }}</h3>
+        <p>{{ package.description }}</p>
+        <p><strong>Duration:</strong> {{ package.duration }}</p>
+        <p class="price">Price: ₹{{ package.price }}</p>
+        <!-- <button class="btn">Select Package</button> -->
+      </div>
+    </div>
+  </div>
+
+  

@@ -1,0 +1,55 @@
+.add-car-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fafafa;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.add-car-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.add-car-container form div {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.add-car-container label {
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #555;
+}
+
+.add-car-container input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.add-car-container button {
+    width: 100%;
+    padding: 12px;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.add-car-container button:hover {
+    background-color: #0d47a1;
+}
+
+.add-car-container button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}

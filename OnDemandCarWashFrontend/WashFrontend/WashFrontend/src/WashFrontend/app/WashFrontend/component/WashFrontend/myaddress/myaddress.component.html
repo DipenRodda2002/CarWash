@@ -1,0 +1,35 @@
+<app-customer-navbar></app-customer-navbar>
+<div class="address-container">
+    <h2>My Addresses</h2>
+    <div *ngIf="address.length > 0; else noAddress">
+      <div class="address-card" *ngFor="let ad of address">
+        <!-- <p><strong>CarId:</strong>{{car.carId}}</p> -->
+        <p><strong>Street:</strong> {{ ad.street }}</p>
+        <p><strong>City:</strong> {{ ad.city }}</p>
+        <p><strong>State:</strong> {{ ad.state }}</p>
+        <p><strong>Pincode:</strong> {{ ad.pincode }}</p>
+        <p><strong>Address Type:</strong>{{ad.addressType}}</p>
+        <button class="edit-btn" (click)="editAddress(ad)">Edit</button>
+        <button class="delete-btn" (click)="deletecar(ad.addressId)">Delete</button>
+
+        
+      </div>
+    </div>
+    <ng-template #noAddress>
+      <p>No Address found for your account.</p>
+    </ng-template>
+  </div>
+
+  <div *ngIf="editingAddress">
+    <h3>Edit Address</h3>
+    <form (ngSubmit)="saveEdit()">
+      <input type="text" [(ngModel)]="tempAddress.street" name="street" required />
+      <input type="text" [(ngModel)]="tempAddress.city" name="city" required />
+      <input type="text" [(ngModel)]="tempAddress.state" name="state" required />
+      <input type="text" [(ngModel)]="tempAddress.pincode" name="pincode" required />
+      <input type="text" [(ngModel)]="tempAddress.addressType" name="addressType" required />
+      <button type="submit">Update</button>
+      <button type="button" (click)="editingAddress = null">Cancel</button>
+    </form>
+  </div>
+  
